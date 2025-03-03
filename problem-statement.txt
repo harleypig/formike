@@ -1,0 +1,56 @@
+I am trying to replicate a home PC setup to an AWS cloud environment. I am
+running python in Windows but all the things I need will run on Ubuntu also.
+
+This is a test/draft attempt and I am making best effort to see if it works.
+
+I need to be able to remote in to the EC2 OS and run python scripts and then
+copy the resulting files from EC2 to S3 and/or download them from EC2/S3
+
+EC2
+
+An EC2 instance that can run Python 3 with the following packages and
+libraries installed and run via Python: YOLO, Scikit, Tensorflow, pytorch. The
+computer I am running at home is using the following specs. I would like to
+replicate that level of power or as close to it as possible depending on the
+cost of the EC2 instance:
+
+* Windows 11
+* 64Gig RAM
+* RTX 4070 GPU
+* Intel Core i9-14900K
+* 1TB for system drive
+* 5TB data storage
+* Running Python 3 with the following packages and libraries installed and run via Python: YOLO, Scikit, Tensorflow, pytorch
+
+The EC2 instance needs to support CUDA.
+
+I was planning on using Ubuntu for the OS.
+
+Do the E2C Ubuntu instances have a desktop GUI or is it all server CLI?
+
+The instance will be run sporadically. Some days will be 1 hour others up to
+4. Some days it won’t be used at all so we would like to be able to turn
+on-demand turn on and off.
+
+
+S3
+
+I have 4 TB of data and as I understand it I don’t need to buy or declare in
+advance how much data I have as S3 scales automatically.
+
+Once the data is uploaded into S3 it will pretty much be static. No uploads or
+downloads will happen except maybe once a year to update files.
+
+* What is the best method to upload files into the bucket?
+* The EC2 instance will be reading all the files and doing some analysis.
+
+Users/Roles
+
+User 1 - this user will run the python scripts and should be able to access
+the Ubuntu OS and the S3 but not make any changes in the AWS Console or
+services. Start and stop EC2 instance - I assume they will need some level of
+console access to start and stop the EC2 instance but if I can limit access to
+the EC2 instance OS but not the AWS Console that would be best - unless that
+is the only way to use SSH, CLI or EC2 Instance Connect in which case they
+should only be able to use those tools to access the OS but can’t make changes
+to any services other than starting and stopping.
